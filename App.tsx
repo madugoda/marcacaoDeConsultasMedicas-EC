@@ -1,36 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+// @ts-ignore
+import { NavigationContainer } from "@react-navigation/native";
+import { ThemeProvider } from 'styled-components';
+import AppRoutes from './src/routes';
+import theme from './src/styles/theme';
+import { StatusBar } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>🌸 Bem-vindo ao meu App 🌸</Text>
-      <Text style={styles.subtitle}>Teste da aula do dia 28/03/2025 🐰💖</Text>
-      <StatusBar style="auto" />
-    </View>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <StatusBar
+              barStyle="light-content"
+              backgroundColor={theme.colors.primary}
+          />
+          <AppRoutes />
+        </NavigationContainer>
+      </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fce4ec', // cor de fundo rosa claro
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ff69b4', // rosa quente
-    fontFamily: 'sans-serif', // fonte fofa
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 20,
-    color: '#ff8c00', // laranja suave
-    fontFamily: 'sans-serif',
-    textAlign: 'center',
-    marginTop: 10,
-  },
-});
-
